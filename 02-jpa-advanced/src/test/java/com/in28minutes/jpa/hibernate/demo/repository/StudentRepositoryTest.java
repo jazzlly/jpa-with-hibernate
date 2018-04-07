@@ -52,6 +52,11 @@ public class StudentRepositoryTest {
 		Student student = em.find(Student.class, 20001L);
 		student.setAddress(new Address("No 101", "Some Street", "Hyderabad"));
 		em.flush();
+
+		Student student1 = repository.findByCity("Hyderabad");
+		assert student1 != null;
+		assert (student.equals(student1));
+		System.out.println(student1);
 	}
 
 	@Test

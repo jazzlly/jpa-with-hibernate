@@ -1,6 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo.repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,6 +91,13 @@ public class StudentRepository {
 
 		em.persist(student);
 		em.persist(course);
+	}
+
+	public Student findByCity(String city) {
+		Query query = em.createQuery(
+				"select s from Student s where city = :city", Student.class);
+		query.setParameter("city", city);
+		return (Student) query.getSingleResult();
 	}
 
 }

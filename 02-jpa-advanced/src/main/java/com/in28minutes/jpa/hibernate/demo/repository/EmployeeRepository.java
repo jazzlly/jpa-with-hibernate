@@ -28,11 +28,15 @@ public class EmployeeRepository {
 	}
 
 	public List<PartTimeEmployee> retrieveAllPartTimeEmployees() {
-		return em.createQuery("select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
+		return em.createQuery(
+				"select e from PartTimeEmployee e", PartTimeEmployee.class)
+				.getResultList();
 	}
 
 	public List<FullTimeEmployee> retrieveAllFullTimeEmployees() {
-		return em.createQuery("select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
+		return em.createQuery(
+				"select e from FullTimeEmployee e", FullTimeEmployee.class)
+				.getResultList();
 	}
 
 }

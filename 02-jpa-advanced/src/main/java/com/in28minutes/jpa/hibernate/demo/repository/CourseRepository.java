@@ -3,6 +3,7 @@ package com.in28minutes.jpa.hibernate.demo.repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class CourseRepository {
 	@Autowired
 	private EntityManager em;
 
+
 	public Course findById(Long id) {
 		Course course = em.find(Course.class, id);
 		logger.info("Course -> {}", course);
@@ -30,7 +32,6 @@ public class CourseRepository {
 	}
 
 	public Course save(Course course) {
-
 		if (course.getId() == null) {
 			em.persist(course);
 		} else {
